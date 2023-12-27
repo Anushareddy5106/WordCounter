@@ -1,12 +1,17 @@
 public class HashMap {
-    private LinkedList list;
+    private static final int CAPACITY = 20;
+    private LinkedList[] buckets;
 
     public HashMap() {
-        this.list = new LinkedList();
+        this.buckets = new LinkedList[CAPACITY];
+
+        for (int i = 0; i < CAPACITY; i++) {
+            this.buckets[i] = new LinkedList();
+        }
     }
 
     public HashMap(String sentence) {
-        this.list = new LinkedList();
+        this();
 
         String[] words = sentence.split(" ");
 
@@ -18,6 +23,23 @@ public class HashMap {
     public void add(String data) {
         data = data.toLowerCase();
 
+        int index = generateHashCode(data);
+        addInList(buckets[index], data);
+
+    }
+
+    public int get(String data) {
+        data = data.toLowerCase();
+
+        int index = generateHashCode(data);
+        return getFromList(buckets[index], data);
+    }
+
+    private int generateHashCode(String data) {
+        return Math.abs(data.hashCode()) % CAPACITY;
+    }
+
+    private void addInList(LinkedList list, String data) {
         MyMapNode current = list.head;
         while (current != null) {
             if (current.key.equals(data)) {
@@ -30,9 +52,7 @@ public class HashMap {
         list.add(data);
     }
 
-    public int get(String data) {
-        data = data.toLowerCase();
-
+    private int getFromList(LinkedList list, String data) {
         MyMapNode current = list.head;
         while (current != null) {
             if (current.key.equals(data)) {
