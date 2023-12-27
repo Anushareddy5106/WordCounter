@@ -20,4 +20,22 @@ public class LinkedList {
         }
     }
 
+    public void remove(String key) {
+        MyMapNode current = this.head;
+        MyMapNode previous = null;
+
+        while (current != null) {
+            if (current.key.equals(key)) {
+                if (previous == null) {
+                    this.head = current.next;
+                } else {
+                    previous.next = current.next;
+                }
+                current.next = null;
+                return;
+            }
+            previous = current;
+            current = current.next;
+        }
+    }
 }

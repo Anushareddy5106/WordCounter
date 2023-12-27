@@ -1,4 +1,5 @@
 public class HashMap {
+    
     private static final int CAPACITY = 20;
     private LinkedList[] buckets;
 
@@ -28,11 +29,18 @@ public class HashMap {
 
     }
 
-    public int get(String data) {
-        data = data.toLowerCase();
+    public int get(String key) {
+        key = key.toLowerCase();
 
-        int index = generateHashCode(data);
-        return getFromList(buckets[index], data);
+        int index = generateHashCode(key);
+        return getFromList(buckets[index], key);
+    }
+
+    public void remove(String key) {
+        key = key.toLowerCase();
+
+        int index = generateHashCode(key);
+        buckets[index].remove(key);
     }
 
     private int generateHashCode(String data) {
@@ -52,7 +60,7 @@ public class HashMap {
         list.add(data);
     }
 
-    private int getFromList(LinkedList list, String data) {
+    public int getFromList(LinkedList list, String data) {
         MyMapNode current = list.head;
         while (current != null) {
             if (current.key.equals(data)) {
@@ -62,4 +70,5 @@ public class HashMap {
         }
         return 0;
     }
+
 }
