@@ -4,6 +4,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Binary Search Tree!");
 
+        //UC1
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 
         bst.add(5);
@@ -11,6 +12,10 @@ public class App {
         bst.add(4);
 
         bst.inOrderTraversal(bst.root);
+        System.out.println(""); 
+
+        //UC2
+        System.out.println("Num of nodes: " +  bst.size());
     }
 
 }

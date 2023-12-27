@@ -1,14 +1,18 @@
 package BinarySearchTree;
 
 public class BinarySearchTree<T extends Comparable<T>> {
-    BinaryNode<T> root;
+
+    public BinaryNode<T> root;
+    private int numOfNodes;
 
     public BinarySearchTree() {
         this.root = null;
+        this.numOfNodes = 0;
     }
 
     public BinarySearchTree(T root) {
         this.root = new BinaryNode<>(root);
+        this.numOfNodes = 1;
     }
 
     public void add(T node) {
@@ -17,6 +21,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         } else {
             addNode(root, node);
         }
+        this.numOfNodes++;
     }
 
     private BinaryNode<T> addNode(BinaryNode<T> root, T node) {
@@ -42,4 +47,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    public int size() {
+        return numOfNodes;
+    }
 }
