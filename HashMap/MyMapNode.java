@@ -1,3 +1,5 @@
+package HashMap;
+
 public class MyMapNode {
     public String key;
     public int value;

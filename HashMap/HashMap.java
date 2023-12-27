@@ -1,5 +1,7 @@
+package HashMap;
+
 public class HashMap {
-    
+
     private static final int CAPACITY = 20;
     private LinkedList[] buckets;
 

@@ -1,3 +1,5 @@
+package HashMap;
+
 public class LinkedList {
     public MyMapNode head;
 
